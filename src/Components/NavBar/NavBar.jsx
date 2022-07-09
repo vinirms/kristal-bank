@@ -1,5 +1,6 @@
 import { Btn_toggle, Header, Nav, Nav_Logo, Nav_menu } from "./NavBarStyle";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,11 @@ const NavBar = () => {
   return (
     <Header>
       <Nav>
-        <Nav_Logo>Benq</Nav_Logo>
+        <Nav_Logo>
+          <Link to={"/"}>
+            K <span>ristal</span>
+          </Link>
+        </Nav_Logo>
         <Nav_menu open={open}>
           <li>
             <a href="#">Para Você</a>
@@ -20,7 +25,9 @@ const NavBar = () => {
           <li>
             <a href="#">Ajuda</a>
           </li>
-          <button>Area do Cliente</button>
+          <button>
+            <Link to={"/areacliente"}>Area do Cliente</Link>
+          </button>
         </Nav_menu>
         <Btn_toggle onClick={toggler}>
           <div className="btn_trace"></div>

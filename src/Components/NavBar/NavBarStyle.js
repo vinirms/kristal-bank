@@ -28,9 +28,18 @@ export const Nav = styled.nav`
 `
 export const Nav_Logo = styled.h1`
     color: white;
-    font-size: 2em;
-    font-family: 'Righteous', cursive;
+    font-size: 2.5em;
+    font-family: 'Splash', cursive;
     letter-spacing: 2px;
+    span{
+        font-family: 'Righteous', cursive;
+        text-decoration: underline;
+        font-size: .6em;
+    }
+    a{
+        color:  white;
+        text-decoration: none;
+    }
 `
 export const Nav_menu = styled.ul`
     gap: 20px;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Container, Section } from "./BannerStyle";
 import img from "../../Assets/Image/img.png";
 import master from "../../Assets/Image/mastercard.png";
@@ -8,7 +9,9 @@ const Banner = () => {
     <Section>
       <Container>
         <div className="square_info">
-          <p>Benq</p>
+          <p>
+            K <span>ristal</span>
+          </p>
           <p>O banco para toda família</p>
         </div>
         <div className="square">
@@ -19,7 +22,9 @@ const Banner = () => {
           <p>Cartao de crédito Internacinal e Anuidade zero</p>
           <img src={master} alt="" />
         </div>
-        <button>Abrir Conta</button>
+        <button>
+          <Link to={"/criarconta"}>Abrir Conta</Link>
+        </button>
       </Container>
     </Section>
   );

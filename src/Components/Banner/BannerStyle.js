@@ -33,9 +33,15 @@ export const Container = styled.div`
         flex-direction: column;
         z-index: 2;
         p:nth-child(1){
-            font-family: 'Righteous', cursive;
-            font-size: 4em;
+            font-family: 'Splash', cursive;
+            font-size: 3.5em;
+            font-weight:bold ;
             margin: 0;
+            span{
+                font-family: 'Righteous', cursive;
+                font-size: .6em;
+                text-decoration: underline;
+            }
         }
         p:nth-child(2){
             font-family: 'Righteous', cursive;
@@ -163,6 +169,10 @@ export const Container = styled.div`
             box-shadow: 0px 8px 10px -4px #000000;
             background-color:#808e9b;
         }
+        a{
+        color:  white;
+        text-decoration: none;
+        }  
         @media (max-width: 1500px){
             display: none;
         }
