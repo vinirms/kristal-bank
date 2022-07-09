@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../../Components/NavBar/NavBar";
 import Rodape from "../../Components/Rodape/Rodape";
 import { Container_form, Formulario, Main } from "./CriarContaStyle";
 
+import { autenticacao } from "../../Hooks/useAutenticacao";
 const CriarConta = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -13,7 +14,9 @@ const CriarConta = () => {
   const [senhaConfirmacao, setSenhaConfirmacao] = useState("");
   const [erro, setErro] = useState("");
 
-  const handleSubmit = (e) => {
+  const { criarConta, error: authError } = autenticacao();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setErro(null);
@@ -31,7 +34,18 @@ const CriarConta = () => {
       setErro("As senhas não coincidem.");
       return;
     }
+
+    const res = await criarConta(usuario);
+    if (res) {
+      console.log(usuario);
+    }
   };
+
+  useEffect(() => {
+    if (authError) {
+      setErro(authError);
+    }
+  }, [authError]);
 
   return (
     <>

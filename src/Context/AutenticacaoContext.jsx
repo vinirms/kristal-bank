@@ -2,7 +2,7 @@ import { useContext, createContext } from "react";
 
 const ContextoAutenticacao = createContext()
 
-function autenticacaoProvider({children, value}){
+export function AutenticacaoProvider({children, value}){
     return(
         <ContextoAutenticacao.Provider value={value}>
             {children}

@@ -56,7 +56,7 @@ export const Container = styled.div`
             width: 200px;
             }
             p:nth-child(1){
-            font-family: 'Righteous', cursive;
+            font-family: 'Splash', cursive;
             font-size: 3em;
             margin: 0;
              }
@@ -153,28 +153,37 @@ export const Container = styled.div`
     }
 
     button{
-        position: absolute;
         top:40vh ;
         right: 15%;
-        padding: 10px 20px;
-        border: none;
-        font-size: 1.5em;
-        background-color: #485460;
-        border-radius: 5px;
         color: white;
+        border: none;
         cursor: pointer;
+        font-size: 1.5em;
+        padding: 10px 20px;
+        position: absolute;
+        border-radius: 5px;
+        background-color: #485460;
         box-shadow: 1px 2px 4px 1px #000000;
+        font-family: 'Alegreya Sans', sans-serif;
+        
         &:hover{
             -webkit-box-shadow: 0px 8px 18px -4px #000000; 
             box-shadow: 0px 8px 10px -4px #000000;
             background-color:#808e9b;
         }
         a{
-        color:  white;
-        text-decoration: none;
+            color:  white;
+            text-decoration: none;
+            border: 2px solid red;
+
         }  
         @media (max-width: 1500px){
-            display: none;
+            top: 25vh;
+            right: 5%;
+            z-index: 4;
+            width: 100px;
+            padding: 10px;
+            font-size: 1em;
         }
     }
     @media (max-width: 968px){

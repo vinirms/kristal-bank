@@ -27,7 +27,7 @@ export const Nav = styled.nav`
     }
 `
 export const Nav_Logo = styled.h1`
-    color: white;
+    color: #2ecc71;
     font-size: 2.5em;
     font-family: 'Splash', cursive;
     letter-spacing: 2px;
@@ -35,6 +35,7 @@ export const Nav_Logo = styled.h1`
         font-family: 'Righteous', cursive;
         text-decoration: underline;
         font-size: .6em;
+        color: white;
     }
     a{
         color:  white;
@@ -60,6 +61,7 @@ export const Nav_menu = styled.ul`
         padding: 10px 10px;
         border-radius: 5px;
         background-color:#808e9b ;
+        font-family: 'Alegreya Sans', sans-serif;
         &:hover{
             color:black;
             background-color: #d2dae2;

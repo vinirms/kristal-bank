@@ -22,9 +22,10 @@ const Banner = () => {
           <p>Cartao de crédito Internacinal e Anuidade zero</p>
           <img src={master} alt="" />
         </div>
-        <button>
-          <Link to={"/criarconta"}>Abrir Conta</Link>
-        </button>
+
+        <Link to={"/criarconta"}>
+          <button>Abrir Conta</button>
+        </Link>
       </Container>
     </Section>
   );
