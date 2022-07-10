@@ -1,4 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { collection, doc, Firestore, addDoc } from "firebase/firestore";
 import { useState } from "react";
 import db from '../Firebase/db.config'
 
@@ -13,8 +14,8 @@ export const autenticacao = ()=>{
                 data.email,
                 data.senha
             )
-                
-        return user;
+                console.log(data)
+        return {user}
         } catch (error) {
             let erroMessage
            if(error.message.includes("Password")){
@@ -23,6 +24,17 @@ export const autenticacao = ()=>{
             erroMessage= "Email já cadastrado"
            }
            setError(erroMessage)
+        }
+    }
+    const inserirDoc = async(data) =>{
+    
+        try {
+            const newDoc = {...data}
+            const docIn = await addDoc(collection( db, docCollection), newDoc)
+            console.log(docIn)
+            return docIn
+        } catch (error) {
+            console.log(error.message)
         }
     }
     const login = async (data)=>{
@@ -49,6 +61,7 @@ export const autenticacao = ()=>{
         criarConta,
         error,
         login,
-        logout
+        logout,
+        inserirDoc
     }
 }
