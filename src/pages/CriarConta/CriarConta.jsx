@@ -5,7 +5,6 @@ import { Container_form, Formulario, Main } from "./CriarContaStyle";
 import { autenticacao } from "../../Hooks/useAutenticacao";
 import { useAddDoc } from "../../Hooks/useAddDoc";
 import { useValueAutenticacao } from "../../Context/AutenticacaoContext";
-
 const CriarConta = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -18,7 +17,6 @@ const CriarConta = () => {
   const [saldo, setSaldo] = useState("");
   const { criarConta, error: authError } = autenticacao();
   const { inserirDoc } = useAddDoc("usuarios");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 

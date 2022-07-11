@@ -14,7 +14,7 @@ export const autenticacao = ()=>{
                 data.email,
                 data.senha
             )
-                console.log(data)
+            console.log(user.uid)
         return {user}
         } catch (error) {
             let erroMessage

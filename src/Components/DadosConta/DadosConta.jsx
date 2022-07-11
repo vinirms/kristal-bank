@@ -1,7 +1,10 @@
 import { Main } from "./DadosContaStyle";
 import { useFetchDados } from "../../Hooks/useFetchDados";
+// import { useValueAutenticacao } from "../../Context/AutenticacaoContext";
 const DadosConta = () => {
-  const { dados } = useFetchDados("usuarios");
+  // const { user } = useValueAutenticacao();
+  const { documentos: dados } = useFetchDados("usuarios");
+
   return (
     <Main>
       <h1>dados</h1>
