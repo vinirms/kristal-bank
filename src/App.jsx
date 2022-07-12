@@ -2,16 +2,16 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // paginas
 import AreaCliente from "./pages/AreaCliente/AreaCliente";
 import CriarConta from "./pages/CriarConta/CriarConta";
+import Conta from "./pages/Bancking/Conta";
 import Home from "./pages/Home/Home";
+import DadosConta from "./Components/DadosConta/DadosConta";
 //hooks
 import { useState, useEffect } from "react";
-import { autenticacao } from "./Hooks/useAutenticacao";
+import { auth } from "./Firebase/db.config";
 import { onAuthStateChanged } from "firebase/auth";
 import { AutenticacaoProvider } from "./Context/AutenticacaoContext";
-import Conta from "./pages/Bancking/Conta";
 function App() {
   const [user, setUser] = useState(undefined);
-  const { auth } = autenticacao();
   const carregando = user === undefined;
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function App() {
   }, [auth]);
 
   if (carregando) {
-    return <p>Carregando...</p>;
+    return <h1>Carregando...</h1>;
   }
   return (
     <>
@@ -41,6 +41,10 @@ function App() {
             <Route
               path="/conta"
               element={user ? <Conta /> : <Navigate to="/criarconta" />}
+            />
+            <Route
+              path="/dados"
+              element={user ? <DadosConta /> : <Navigate to="/criarconta" />}
             />
           </Routes>
         </BrowserRouter>

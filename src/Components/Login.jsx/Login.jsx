@@ -1,23 +1,34 @@
-import React from "react";
 import { Main, Container_form, Formulario } from "./LoginStyle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { autenticacao } from "../../Hooks/useAutenticacao";
+import { LoginOut } from "../../Hooks/useLoginLogout";
+// import { auth } from "../../Firebase/db.config";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
-  const { login } = autenticacao();
+
+  //////////LOGIN///////////////////
+  const { Login, error } = LoginOut();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const user = {
+
+    const userLogin = {
       email,
       senha,
     };
 
-    const resposta = await login(user);
+    const resp = await Login(userLogin);
+    console.log(resp);
   };
+  useEffect(() => {
+    if (error) {
+      setErro(error);
+    }
+  }, []);
+
   return (
     <Main>
       <Container_form className="container_form">

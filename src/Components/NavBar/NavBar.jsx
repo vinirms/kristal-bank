@@ -2,15 +2,15 @@ import { Btn_toggle, Header, Nav, Nav_Logo, Nav_menu } from "./NavBarStyle";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useValueAutenticacao } from "../../Context/AutenticacaoContext";
-import { autenticacao } from "../../Hooks/useAutenticacao";
+import { LoginOut } from "../../Hooks/useLoginLogout";
+
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const toggler = () => {
     setOpen(!open);
   };
-
   const { user } = useValueAutenticacao();
-  const { logout } = autenticacao();
+  const { Logout } = LoginOut();
   return (
     <Header>
       <Nav>
@@ -40,9 +40,10 @@ const NavBar = () => {
           )}
           {user && (
             <>
+              <Link to={"/dados"}>Perfil</Link>
               <Link to={"/conta"}>Conta Corrente</Link>
               <Link to={""}>
-                <button onClick={logout}>Sair</button>
+                <button onClick={Logout}>Sair</button>
               </Link>
             </>
           )}
