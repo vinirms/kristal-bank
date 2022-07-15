@@ -2,8 +2,7 @@ import { Main, Container_form, Formulario } from "./LoginStyle";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoginOut } from "../../Hooks/useLoginLogout";
-// import { auth } from "../../Firebase/db.config";
-// import { signInWithEmailAndPassword } from "firebase/auth";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -21,7 +20,6 @@ const Login = () => {
     };
 
     const resp = await Login(userLogin);
-    console.log(resp);
   };
   useEffect(() => {
     if (error) {

@@ -48,7 +48,10 @@ export const Nav_menu = styled.ul`
     list-style: none;
     align-items: center;
     justify-content: center;
-  
+    h1{
+        color: white;
+        font-size: 1.2em;
+    }
     a{
         color: white;
         text-decoration: none;

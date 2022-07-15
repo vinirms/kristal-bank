@@ -1,11 +1,14 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {  useState } from "react";
 import db from '../Firebase/db.config'
 import { auth } from "../Firebase/db.config";
+
+
 export const CriarUser = ()=>{
+
     const [error, setError] = useState('')
         const User = async(data) =>{
-           await createUserWithEmailAndPassword(auth, data.email, data.senha)
+        const usuario = await createUserWithEmailAndPassword(auth, data.email, data.senha)
             .then((userCredential) => {
                 const user = userCredential.user;
                
@@ -19,6 +22,8 @@ export const CriarUser = ()=>{
                    }
                    setError(erroMessage)
             });
+            console.log(`log do hook ${usuario}`)
         }
+
     return {error, User}
 }

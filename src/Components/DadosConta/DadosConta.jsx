@@ -1,8 +1,17 @@
 import { Main, Formulario, Container_form } from "./DadosContaStyle";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Rodape from "../Rodape/Rodape";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  doc,
+  setDoc,
+  collection,
+  serverTimestamp,
+} from "firebase/firestore";
+import { useValueAutenticacao } from "../../Context/AutenticacaoContext";
+
 import db from "../../Firebase/db.config";
 const DadosConta = () => {
   const [nome, setNome] = useState("");
@@ -11,10 +20,12 @@ const DadosConta = () => {
   const [idade, setIdade] = useState("");
   const [saldo, setSaldo] = useState("");
   const [erro, setErro] = useState("");
+  const { user } = useValueAutenticacao();
+  const redirect = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await addDoc(collection(db, "user"), {
+    const res = await setDoc(doc(db, "user", user.uid), {
       nome,
       contato,
       cpf,
@@ -22,7 +33,8 @@ const DadosConta = () => {
       idade,
       time: serverTimestamp(),
     });
-    console.log(res.id);
+    console.log(user);
+    redirect("/");
   };
   return (
     <>

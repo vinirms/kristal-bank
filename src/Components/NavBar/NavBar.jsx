@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useValueAutenticacao } from "../../Context/AutenticacaoContext";
 import { LoginOut } from "../../Hooks/useLoginLogout";
+import { useFetchDado } from "../../Hooks/useFetchDado";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -11,6 +12,8 @@ const NavBar = () => {
   };
   const { user } = useValueAutenticacao();
   const { Logout } = LoginOut();
+  const { dado } = useFetchDado();
+
   return (
     <Header>
       <Nav>
@@ -40,11 +43,12 @@ const NavBar = () => {
           )}
           {user && (
             <>
-              <Link to={"/dados"}>Perfil</Link>
+              <Link to={"/"}>Home</Link>
               <Link to={"/conta"}>Conta Corrente</Link>
               <Link to={""}>
                 <button onClick={Logout}>Sair</button>
               </Link>
+              <h1>{dado.nome}</h1>
             </>
           )}
         </Nav_menu>

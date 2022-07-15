@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { auth } from "./Firebase/db.config";
 import { onAuthStateChanged } from "firebase/auth";
 import { AutenticacaoProvider } from "./Context/AutenticacaoContext";
+
 function App() {
   const [user, setUser] = useState(undefined);
   const carregando = user === undefined;
@@ -23,6 +24,7 @@ function App() {
   if (carregando) {
     return <h1>Carregando...</h1>;
   }
+
   return (
     <>
       <AutenticacaoProvider value={{ user }}>
@@ -36,7 +38,7 @@ function App() {
 
             <Route
               path="/areacliente"
-              element={user ? <Navigate to="/conta" /> : <AreaCliente />}
+              element={user ? <Navigate to="/dados" /> : <AreaCliente />}
             />
             <Route
               path="/conta"

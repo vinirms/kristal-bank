@@ -16,7 +16,7 @@ export const LoginOut = ()=>{
             let msgErro;
             if (error.message.includes("user-not-found")) {
             msgErro = "Usuario nao encontrado";
-            } else if (error.message.includes("wrong-password")) {
+            } else if (error.message.includes("password")) {
             msgErro = "senha incorreta";
             } else {
             msgErro = "ocorreu um erro";
