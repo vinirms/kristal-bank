@@ -13,7 +13,7 @@ const CriarConta = () => {
   const [senhaConfirmacao, setSenhaConfirmacao] = useState("");
   const [erro, setErro] = useState("");
   /////////// DADOS HOOK //////////////////
-  const { User, erro: authError } = CriarUser();
+  const { User, error } = CriarUser();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,13 +30,12 @@ const CriarConta = () => {
     }
     const resposta = await User(user);
   };
-
   useEffect(() => {
-    if (authError) {
-      setErro(authError);
+    if (error) {
+      setErro(error);
+      console.log(error);
     }
-  }, [authError]);
-
+  }, [error]);
   return (
     <>
       <NavBar />
@@ -46,18 +45,6 @@ const CriarConta = () => {
             <legend>Abra sua Conta</legend>
 
             <div className="container_input">
-              <label htmlFor="nome">Nome</label>
-              <input
-                type="text"
-                name="nome"
-                placeholder="Digite seu nome"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="container_input">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -65,40 +52,6 @@ const CriarConta = () => {
                 placeholder="email@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="container_input">
-              <label htmlFor="contato">Contato</label>
-              <input
-                type="number"
-                name="contato"
-                placeholder="(00)00000-0000"
-                value={contato}
-                onChange={(e) => setContato(e.target.value)}
-                required
-              />
-            </div>
-            <div className="container_input">
-              <label htmlFor="cpf">CPF</label>
-              <input
-                type="number"
-                name="cpf"
-                placeholder="000.000.000-00"
-                value={cpf}
-                onChange={(e) => setCpf(e.target.value)}
-                required
-              />
-            </div>
-            <div className="container_input">
-              <label htmlFor="idade">Data de Nascimento</label>
-              <input
-                type="number"
-                name="idade"
-                placeholder="Data de Nascimento"
-                value={idade}
-                onChange={(e) => setIdade(e.target.value)}
                 required
               />
             </div>

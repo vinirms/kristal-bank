@@ -44,11 +44,12 @@ const NavBar = () => {
           {user && (
             <>
               <Link to={"/"}>Home</Link>
-              <Link to={"/conta"}>Conta Corrente</Link>
+              {dado && <Link to={"/conta"}>Conta Corrente</Link>}
+              <Link to={"/dados"}>Perfil</Link>
               <Link to={""}>
                 <button onClick={Logout}>Sair</button>
               </Link>
-              <h1>{dado.nome}</h1>
+              {dado && <h1>{dado.nome}</h1>}
             </>
           )}
         </Nav_menu>

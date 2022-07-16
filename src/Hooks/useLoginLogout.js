@@ -1,9 +1,9 @@
 import { signInWithEmailAndPassword , signOut} from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../Firebase/db.config";
-
+import { useNavigate } from "react-router-dom";
 export const LoginOut = ()=>{
-
+    const navigate= useNavigate()
     const [error, setError] = useState('')
 
     const Login = async (data)=>{
@@ -29,6 +29,8 @@ export const LoginOut = ()=>{
  ///////////////LOGOUT//////////////////
     const Logout = ()=>{
         signOut(auth)
+        navigate("/")
+        localStorage.clear()
     }
 
  return{error,Login,Logout}

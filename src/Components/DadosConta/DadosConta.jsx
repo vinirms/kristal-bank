@@ -13,6 +13,8 @@ import {
 import { useValueAutenticacao } from "../../Context/AutenticacaoContext";
 
 import db from "../../Firebase/db.config";
+import Perfil from "../Perfil/Perfil";
+import { useFetchDado } from "../../Hooks/useFetchDado";
 const DadosConta = () => {
   const [nome, setNome] = useState("");
   const [contato, setContato] = useState("");
@@ -21,6 +23,7 @@ const DadosConta = () => {
   const [saldo, setSaldo] = useState("");
   const [erro, setErro] = useState("");
   const { user } = useValueAutenticacao();
+  const { dado } = useFetchDado();
   const redirect = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,12 +31,13 @@ const DadosConta = () => {
     const res = await setDoc(doc(db, "user", user.uid), {
       nome,
       contato,
+      email: user.email,
       cpf,
       saldo,
+      historico: [],
       idade,
       time: serverTimestamp(),
     });
-    console.log(user);
     redirect("/");
   };
   return (
@@ -41,8 +45,8 @@ const DadosConta = () => {
       <NavBar />
       <Main>
         <Container_form className="container_form">
-          <Formulario>
-            <legend>Complete seu Cadastro</legend>
+          <Formulario dado={dado}>
+            <legend>Complete seus dados</legend>
 
             <div className="container_input">
               <label htmlFor="nome">Nome</label>
@@ -59,7 +63,7 @@ const DadosConta = () => {
             <div className="container_input">
               <label htmlFor="contato">Contato</label>
               <input
-                type="number"
+                type="text"
                 name="contato"
                 placeholder="(00)00000-0000"
                 value={contato}
@@ -70,7 +74,7 @@ const DadosConta = () => {
             <div className="container_input">
               <label htmlFor="cpf">CPF</label>
               <input
-                type="number"
+                type="text"
                 name="cpf"
                 placeholder="000.000.000-00"
                 value={cpf}
@@ -81,7 +85,7 @@ const DadosConta = () => {
             <div className="container_input">
               <label htmlFor="idade">Data de Nascimento</label>
               <input
-                type="number"
+                type="text"
                 name="idade"
                 placeholder="Data de Nascimento"
                 value={idade}
@@ -105,6 +109,10 @@ const DadosConta = () => {
             <button onClick={handleSubmit}>Criar Conta</button>
           </Formulario>
         </Container_form>
+
+        <Perfil />
+        <div className="forma"></div>
+        <div className="bg_forma"></div>
       </Main>
       <Rodape />
     </>

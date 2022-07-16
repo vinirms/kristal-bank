@@ -14,15 +14,15 @@ export const CriarUser = ()=>{
                
             })
             .catch((error) => {
-                let erroMessage
-                   if(error.message.includes("Password")){
-                    erroMessage= "Senha deve conter 6 caracteres"
-                   } else if(error.message.includes("email-already")){
-                    erroMessage= "Email já cadastrado"
-                   }
-                   setError(erroMessage)
+                let q
+                if(error.message.includes("Password")){
+                    q = ("senha invalida")
+                }else if(error.message.includes("auth")){
+                    q = ("Este email já está cadastrado")
+                }
+                setError(q)
             });
-            console.log(`log do hook ${usuario}`)
+            
         }
 
     return {error, User}

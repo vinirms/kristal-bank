@@ -14,7 +14,7 @@ export const useFetchDado =()=>{
         const docSnap = await getDoc(docRef);
         setDado(docSnap.data());
       } catch (error) {
-        console.log(error.message);
+        const erro = error.message
       }
     }
     dados();
