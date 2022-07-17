@@ -86,7 +86,6 @@ export const Saldo = styled.div`
             width: 100%;
             display: flex;
             align-items: center;
-            border: 2px solid red;
             margin: 0;
             p{
                 margin-left: 5px;

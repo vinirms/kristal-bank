@@ -67,7 +67,7 @@ const Conta = () => {
         </Saldo>
         <Historico>
           <h1>Operações Realizadas</h1>
-          {dado && dado.historico.map((h) => <p key={h}>{h}</p>)}
+          {dado && dado.historico.map((h) => <p key={h}>{h}</p>).reverse()}
         </Historico>
       </Main>
       <Rodape />
